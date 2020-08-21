@@ -14,6 +14,8 @@ import Signup from "./pages/Signup";
 import Nav from "./components/Nav";
 import Success from "./pages/Success";
 import OrderHistory from "./pages/OrderHistory";
+import { useDispatch, useSelector } from 'react-redux'
+import { addProduct } from "./redux/actions/products";
 
 const client = new ApolloClient({
   request: (operation) => {
@@ -28,6 +30,13 @@ const client = new ApolloClient({
 })
 
 function App() {
+  const dispatch = useDispatch();
+  const productsState = useSelector(state => state.products);
+
+
+  React.useEffect(() => {
+    console.log(productsState);
+  }, [productsState])
   return (
     <ApolloProvider client={client}>
       <Router>
