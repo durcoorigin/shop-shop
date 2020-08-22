@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import ProductItem from "../ProductItem";
 import { useDispatch, useSelector } from 'react-redux';
 import { UPDATE_PRODUCTS } from "../../utils/actions";
+import { updateProducts } from "../../redux/actions/products";
 import { useQuery } from '@apollo/react-hooks';
 import { QUERY_PRODUCTS } from "../../utils/queries";
 import { idbPromise } from "../../utils/helpers";
@@ -17,35 +18,33 @@ function ProductList() {
 
   useEffect(() => {
     if(data) {
-      dispatch({
-           type: UPDATE_PRODUCTS,
-          products: data.products
-        });
+      console.log(data.products)
+      updateProducts(data.products)
         data.products.forEach((product) => {
           idbPromise('products', 'put', product);
         });
     } else if (!loading) {
       idbPromise('products', 'get').then((products) => {
-        dispatch({
-          type: UPDATE_PRODUCTS,
-         products: products
-       });
+        console.log(products)
+        updateProducts(products)
       });
     }
   }, [data, loading, dispatch]);
 
   function filterProducts() {
     if (!currentCategory) {
-      return state.products;
+      return state.products.products;
     }
 
-    return state.products.filter(product => product.category._id === currentCategory);
+    return state.products.products.filter(product => product.category._id === currentCategory);
   }
+
+console.log(state);
 
   return (
     <div className="my-2">
       <h2>Our Products:</h2>
-      {state.products.length ? (
+      {state.products.products.length ? (
         <div className="flex-row">
             {filterProducts().map(product => (
                 <ProductItem

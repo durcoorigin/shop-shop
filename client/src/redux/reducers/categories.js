@@ -1,10 +1,8 @@
 import { ADD_PRODUCT, REMOVE_PRODUCT, UPDATE_PRODUCTS } from '../actions/products';
 
-const initialState = {
-    products: [],
-}
+const initialState = []
 
-export const productReducer = (state = initialState, action) => {
+export const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
     case ADD_PRODUCT:
       return {
