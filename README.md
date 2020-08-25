@@ -1,6 +1,6 @@
  [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
   
- # React Portfolio
+ # Shop Shop
  
   
   
@@ -39,7 +39,7 @@
   
   ## Usage Instructions
   ---
-  go to https://durcoorigin.github.io/shop-shop/
+  go to https://git.heroku.com/afternoon-stream-33807.git
   
   Navigate through the application to view and purchase various products.  
   
