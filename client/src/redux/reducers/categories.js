@@ -1,23 +1,23 @@
-import { ADD_PRODUCT, REMOVE_PRODUCT, UPDATE_PRODUCTS } from '../actions/products';
+import { ADD_CATEGORY, REMOVE_CATEGORY, UPDATE_CATEGORIES } from '../actions/categories';
 
 const initialState = []
 
 export const categoriesReducer = (state = initialState, action) => {
   switch (action.type) {
-    case ADD_PRODUCT:
+    case ADD_CATEGORY:
       return {
         ...state,
-        products: [...state.products, action.payload]
+        categories: [...state.categories, action.payload]
       };
-    case REMOVE_PRODUCT:
+    case REMOVE_CATEGORY:
       return {
         ...state,
-         products: state.products.filter(product => product.id !== action.payload)
+        categories: state.categories.filter(category => category.id !== action.payload)
       };
-    case UPDATE_PRODUCTS:
+    case UPDATE_CATEGORIES:
       return {
         ...state,
-          products: action.payload
+        categories: action.payload
       };  
     default:
       return state
